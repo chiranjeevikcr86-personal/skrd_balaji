@@ -253,33 +253,34 @@ All 10 public routes included with priorities:
 
 ## 8. Deployment Configuration
 
+### Hosting Platform: **Vercel** (switched from Netlify in Session 19)
+
 ### Build & Output
 ```bash
 npm run build   # Generates static site in /out directory
 ```
-- Output: `d:\SKSDevasthanams\skrd\out\` — **16 pages, 200 files, ~14 MB**
+- Output: `out/` — **16 pages, ~14 MB static export**
 - Every page is pre-rendered as static HTML
+- `/out/` is **NOT committed to git** — Vercel builds it on their servers
 
 ### Deployment Files
 | File | Purpose |
 |---|---|
-| `netlify.toml` | Netlify build config — `build command: npm run build`, `publish: out`, security headers, cache headers |
-| `public/_headers` | Netlify/plain host security & cache headers |
+| `vercel.json` | Vercel config — `/donate` redirect, security headers, cache headers |
 | `next.config.ts` | `output: 'export'`, `trailingSlash: true`, `removeConsole: true` in production |
 
-### How to Deploy (Netlify — fastest)
-1. Run `npm run build` in `d:\SKSDevasthanams\skrd\`
-2. Drag the `out/` folder to [app.netlify.com](https://app.netlify.com)
-3. Add custom domain `kanugondatemple.com`
-4. Enable HTTPS (auto)
+### How to Deploy (Git-connected — auto deploys on every push)
+1. Go to [vercel.com/new](https://vercel.com/new)
+2. Sign in with GitHub → import `skrd_balaji` repo
+3. Leave all settings as default → click **Deploy**
+4. Add custom domain `kanugondatemple.com` in Project Settings → Domains
+5. Every `git push` to `main` auto-deploys ✅
 
-### How to Deploy (Git-connected — auto deploys)
-1. Push `d:\SKSDevasthanams\skrd\` to a GitHub repo
-2. Connect repo in Netlify
-3. Netlify auto-reads `netlify.toml` — no extra config needed
-4. Every `git push` auto-deploys
+### Live URL
+- Vercel URL: `skrd-balaji.vercel.app` (or custom name assigned by Vercel)
+- Custom domain (pending): `kanugondatemple.com`
 
-### Environment Variables (set in Netlify dashboard)
+### Environment Variables (set in Vercel dashboard → Project → Settings → Environment Variables)
 | Variable | Purpose |
 |---|---|
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics 4 Measurement ID (e.g., `G-XXXXXXXXXX`) |
@@ -526,6 +527,15 @@ TypeScript: ✅ zero errors after cleanup
   - `components/ui/Primitives.tsx` — `SectionHeading` and `PremiumSectionHeading` divider ornaments (saffron/red colors, appears on all section headers site-wide)
 - TypeScript: ✅ zero errors
 
+### Session 19 — Switch Deployment Platform: Netlify → Vercel (2026-04-17)
+- **Reason**: Netlify's Next.js Runtime plugin intercepted static export builds and failed to serve `_next/static/` chunks correctly across multiple deploy attempts
+- **Created** `vercel.json` — `/donate` redirect (301), security headers (X-Frame-Options, CSP, Referrer-Policy), cache headers for images and `_next/static/`
+- **Deleted** `netlify.toml` and `public/_headers` (Netlify-specific, no longer needed)
+- **Restored** `/out/` to `.gitignore` — Vercel builds the static output on their servers
+- **Removed** `out/` from git tracking (`git rm -r --cached out/`) — repo is clean again
+- **GitHub repo**: `chiranjeevikcr86-personal/skrd_balaji` — connected to Vercel
+- Files modified: `vercel.json` (new), `.gitignore`, removed `netlify.toml`, removed `public/_headers`
+
 ## 13. Project State Summary
 
 ```
@@ -535,8 +545,9 @@ Pages:          16 routes all building successfully
 Bilingual:      100% — every string on every page is EN/TE
 TypeScript:     Zero errors (last check: 2026-04-17)
 Build:          npm run build → exit code 0
-Output:         out/ directory — 16 pages, 200 files, ~14 MB
-Deployment:     netlify.toml + public/_headers ready
+Output:         out/ directory — 16 pages, ~14 MB (NOT in git — Vercel builds it)
+Deployment:     Vercel — vercel.json config, GitHub auto-deploy on push
+GitHub repo:    chiranjeevikcr86-personal/skrd_balaji (main branch)
 SEO:            All pages have title, description, OG image, keywords
 Sitemap:        10 public URLs with correct priorities
 Schema:         HinduTemple JSON-LD structured data in root layout
@@ -545,9 +556,10 @@ Contact policy: Email-only (hello@cjkdigitalsolutions.com) — no phone, no What
 Branding:       Kumkum Dusk maroon theme + Namalu SVG logo throughout
 
 Pending (non-code):
-  - Google Analytics Measurement ID (env var: NEXT_PUBLIC_GA_MEASUREMENT_ID)
+  - DEPLOY TO VERCEL: vercel.com/new → import skrd_balaji → Deploy
+  - Google Analytics Measurement ID (env var: NEXT_PUBLIC_GA_MEASUREMENT_ID in Vercel dashboard)
   - Google Search Console: verify domain + submit sitemap
   - Google Business Profile: claim + add website + photos
-  - DNS: point kanugondatemple.com to hosting provider
+  - DNS: point kanugondatemple.com to Vercel (after deploying)
   - Live stream: YouTube ID when temple events resume (post-2028 reconstruction)
 ```

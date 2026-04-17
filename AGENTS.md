@@ -35,7 +35,7 @@ This is the **fully bilingual (English/Telugu) official website** for Sri Kanuko
 - All pages bilingual EN/TE — language persists via localStorage
 - Production build clean: `npm run build` → `out/` directory → 16 pages, ~14 MB
 - SEO complete: sitemap, robots.txt, per-page metadata, JSON-LD schema
-- Deployment config: `netlify.toml` + `public/_headers`
+- Deployment config: `vercel.json` (redirects, security headers, cache headers)
 - **Contact policy**: Email-only (`hello@cjkdigitalsolutions.com`) — no phone, WhatsApp, or social media
 - **Branding**: "Kumkum Dusk" deep maroon theme + Namalu SVG logo throughout
 - **Images**: 19 real temple photos across 5 folders — all actively used

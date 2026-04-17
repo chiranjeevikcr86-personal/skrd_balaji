@@ -15,7 +15,7 @@
 
 # next.js
 /.next/
-# /out/ — intentionally committed for Netlify static deploy (build skipped)
+/out/
 
 # production
 /build
@@ -35,6 +35,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+/.vercel/
 
 # typescript
 *.tsbuildinfo
