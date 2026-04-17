@@ -42,8 +42,9 @@ function getTempleStatus(timings: typeof dailyTimings) {
 }
 
 export default function TimingsPageClient() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const getText = useBilingualText();
+  const isTe = locale === "te";
   const [status, setStatus] = useState<ReturnType<typeof getTempleStatus> | null>(null);
   const [activeTab, setActiveTab] = useState<"daily" | "special" | "festivals">("daily");
 
@@ -63,15 +64,18 @@ export default function TimingsPageClient() {
   return (
     <>
       {/* Hero Banner */}
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 bg-gradient-to-br from-temple-dark via-maroon-900 to-temple-darker overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-80 h-80 rounded-full bg-saffron-500 blur-[120px]" />
-        </div>
+      <section className="relative pt-28 pb-16 md:pt-36 md:pb-20 overflow-hidden" style={{ background: "linear-gradient(to bottom, #1E0A08, #1A0808)" }}>
+        <div className="absolute inset-0 mandala-bg" style={{ opacity: 0.20 }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 70%)" }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
-          <h1 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-white mb-4 animate-fade-in-up">
-            {t.timings.title}
+          <p className="text-xs uppercase tracking-[0.35em] mb-3" style={{ color: "rgba(212,175,55,0.60)", fontFamily: "var(--font-heading)" }}>
+            {isTe ? "రోజువారీ పవిత్ర సమయపట్టిక" : "Daily Sacred Schedule"}
+          </p>
+          <h1 className="animate-fade-in-up mb-4" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem,5vw,3.5rem)", color: "white" }}>
+            {isTe ? <>దర్శనం <span className="text-metallic-gold">&amp; సమయాలు</span></> : <>Darshan <span className="text-metallic-gold">&amp; Timings</span></>}
           </h1>
-          <p className="text-ivory-300 text-base sm:text-lg max-w-2xl mx-auto animate-fade-in-up animation-delay-100">
+          <div className="divider-premium w-40 mx-auto mb-5" />
+          <p className="text-sm max-w-xl mx-auto" style={{ fontFamily: "var(--font-serif)", color: "rgba(251,247,240,0.55)" }}>
             {t.timings.subtitle}
           </p>
 
@@ -125,7 +129,7 @@ export default function TimingsPageClient() {
       </section>
 
       {/* Content */}
-      <section className="py-16 md:py-24 bg-ivory-50">
+      <section style={{ background: "#1A0808", padding: "4rem 0 5rem" }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Tab Navigation */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
@@ -137,11 +141,13 @@ export default function TimingsPageClient() {
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`px-6 py-2.5 rounded-xl font-heading font-medium text-sm transition-all duration-300 cursor-pointer ${
-                  activeTab === tab.key
-                    ? "bg-gradient-to-r from-saffron-500 to-saffron-600 text-white shadow-lg shadow-saffron-500/20"
-                    : "bg-white text-temple-dark/60 hover:text-saffron-600 border border-ivory-200 hover:border-saffron-300"
-                }`}
+                className="px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer"
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  background: activeTab === tab.key ? "linear-gradient(135deg,#E8690A,#D4AF37)" : "rgba(255,255,255,0.05)",
+                  color: activeTab === tab.key ? "white" : "rgba(251,247,240,0.55)",
+                  border: activeTab === tab.key ? "none" : "1px solid rgba(255,255,255,0.10)",
+                }}
               >
                 {tab.label}
               </button>
@@ -154,7 +160,9 @@ export default function TimingsPageClient() {
               {dailyTimings.map((timing, index) => {
                 const isClosed = timing.title.en.toLowerCase().includes("closed");
                 return (
-                  <PremiumCard key={index} className={`p-5 sm:p-6 ${isClosed ? "opacity-60 grayscale" : ""}`}>
+                  <div key={index}
+                    style={{ background: isClosed ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.03)", border: `1px solid ${isClosed ? "rgba(255,255,255,0.05)" : "rgba(212,175,55,0.15)"}`, borderRadius: "1rem" }}
+                    className={`p-5 sm:p-6 ${isClosed ? "opacity-50" : ""}`}>
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                       <div className="flex items-start gap-4">
                         <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-lg shrink-0 ${
@@ -165,11 +173,11 @@ export default function TimingsPageClient() {
                           {isClosed ? "🔒" : "🪔"}
                         </div>
                         <div>
-                          <h3 className="font-heading font-semibold text-temple-dark">
+                        <h3 className="font-semibold" style={{ fontFamily: "var(--font-heading)", color: "rgba(251,247,240,0.85)" }}>
                             {getText(timing.title)}
                           </h3>
                           {timing.description && (
-                            <p className="text-temple-dark/50 text-sm mt-1">
+                            <p className="text-sm mt-1" style={{ fontFamily: "var(--font-serif)", color: "rgba(251,247,240,0.45)" }}>
                               {getText(timing.description)}
                             </p>
                           )}
@@ -181,7 +189,7 @@ export default function TimingsPageClient() {
                         </Badge>
                       </div>
                     </div>
-                  </PremiumCard>
+                  </div>
                 );
               })}
             </div>
@@ -191,7 +199,7 @@ export default function TimingsPageClient() {
           {activeTab === "special" && (
             <div className="space-y-4 animate-fade-in">
               {specialTimings.map((timing, index) => (
-                <PremiumCard key={index} className="p-5 sm:p-6">
+                <div key={index} className="p-5 sm:p-6" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(212,175,55,0.15)", borderRadius: "1rem" }}>
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold-100 to-saffron-100 flex items-center justify-center text-lg shrink-0">
@@ -224,7 +232,7 @@ export default function TimingsPageClient() {
                       </Badge>
                     </div>
                   </div>
-                </PremiumCard>
+                </div>
               ))}
             </div>
           )}
@@ -233,7 +241,7 @@ export default function TimingsPageClient() {
           {activeTab === "festivals" && (
             <div className="space-y-4 animate-fade-in">
               {upcomingFestivals.map((festival, index) => (
-                <PremiumCard key={index} className="p-5 sm:p-6 group">
+                <div key={index} className="p-5 sm:p-6" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(212,175,55,0.15)", borderRadius: "1rem" }}>
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-maroon-100 to-saffron-100 flex items-center justify-center text-lg shrink-0">
@@ -244,7 +252,7 @@ export default function TimingsPageClient() {
                           {getText(festival.name)}
                           {festival.highlight && (
                             <span className="ml-2 text-xs px-2 py-0.5 rounded-full bg-gold-100 text-gold-700">
-                              ✨ Featured
+                              ✨ {isTe ? "ప్రత్యేకం" : "Featured"}
                             </span>
                           )}
                         </h3>
@@ -264,16 +272,16 @@ export default function TimingsPageClient() {
                       <span className="text-xs text-temple-dark/40">{getText(festival.duration)}</span>
                     </div>
                   </div>
-                </PremiumCard>
+                </div>
               ))}
             </div>
           )}
 
           {/* Note */}
-          <div className="mt-12 p-6 rounded-2xl bg-saffron-50 border border-saffron-200">
+          <div className="mt-12 p-6 rounded-2xl" style={{ background: "rgba(212,175,55,0.06)", border: "1px solid rgba(212,175,55,0.18)" }}>
             <div className="flex items-start gap-3">
               <span className="text-xl shrink-0">ℹ️</span>
-              <p className="text-saffron-800 text-sm leading-relaxed">
+              <p className="text-sm leading-relaxed" style={{ fontFamily: "var(--font-serif)", color: "rgba(251,247,240,0.55)" }}>
                 {t.timings.timingsNote}
               </p>
             </div>

@@ -36,7 +36,7 @@ interface ButtonProps {
   children: ReactNode;
   href?: string;
   onClick?: () => void;
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "whatsapp";
+  variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   className?: string;
   external?: boolean;
@@ -63,8 +63,6 @@ export function Button({
       "border-2 border-saffron-400 text-saffron-400 hover:bg-saffron-400 hover:text-white",
     ghost:
       "text-saffron-500 hover:bg-saffron-500/10",
-    whatsapp:
-      "bg-green-600 text-white hover:bg-green-700 shadow-lg hover:shadow-green-600/25 hover:-translate-y-0.5 btn-shimmer",
   };
 
   const sizes = {
@@ -128,7 +126,14 @@ export function SectionHeading({
       {/* Decorative element */}
       <div className={`flex items-center gap-3 mt-4 ${centered ? "justify-center" : ""}`}>
         <div className="h-0.5 w-12 bg-gradient-to-r from-transparent to-saffron-400" />
-        <span className="text-saffron-500 text-lg">🕉</span>
+        <span className="text-saffron-500 text-lg flex items-center">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "22px", height: "22px" }}>
+            <ellipse cx="14.5" cy="20" rx="3.8" ry="10.5" fill="#E8690A" transform="rotate(-6 14.5 20)"/>
+            <ellipse cx="25.5" cy="20" rx="3.8" ry="10.5" fill="#E8690A" transform="rotate(6 25.5 20)"/>
+            <ellipse cx="20" cy="21.5" rx="2.4" ry="7.5" fill="#CC1200"/>
+            <circle cx="20" cy="9.5" r="1.8" fill="#D4AF37"/>
+          </svg>
+        </span>
         <div className="h-0.5 w-12 bg-gradient-to-l from-transparent to-saffron-400" />
       </div>
       {subtitle && (
@@ -176,7 +181,14 @@ export function PremiumSectionHeading({
       </h2>
       <div className={`flex items-center gap-4 ${centered ? "justify-center" : ""}`}>
         <div className="h-px w-16 bg-gradient-to-r from-transparent to-saffron-400/60" />
-        <span className="text-saffron-500 text-xl">🕉</span>
+        <span className="text-saffron-500 text-xl flex items-center">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "26px", height: "26px" }}>
+            <ellipse cx="14.5" cy="20" rx="3.8" ry="10.5" fill="#E8690A" transform="rotate(-6 14.5 20)"/>
+            <ellipse cx="25.5" cy="20" rx="3.8" ry="10.5" fill="#E8690A" transform="rotate(6 25.5 20)"/>
+            <ellipse cx="20" cy="21.5" rx="2.4" ry="7.5" fill="#CC1200"/>
+            <circle cx="20" cy="9.5" r="1.8" fill="#D4AF37"/>
+          </svg>
+        </span>
         <div className="h-px w-16 bg-gradient-to-l from-transparent to-saffron-400/60" />
       </div>
       {subtitle && (

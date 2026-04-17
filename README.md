@@ -1,58 +1,52 @@
-# Sri Kanugonda Raya Swami Temple Website
+# Sri Kanukondaraya Swamy Devasthanam — Official Temple Website
 
-Official website for the Sri Kanugonda Raya Swami Temple, built with Next.js, TailwindCSS, and deployed as a static progressive web app (PWA).
+> **Live domain:** https://kanugondatemple.com
 
-## Features
+Official bilingual (English / Telugu) website for Sri Kanukondaraya Swamy Devasthanam, an ancient Hindu temple in Pedakanti Palli, Gangadhara Nellore Mandal, Chittoor District, Andhra Pradesh.
 
-- **Bilingual:** English and Telugu language support without routing changes.
-- **Fast & SEO Friendly:** Fully static architecture optimized for Core Web Vitals.
-- **PWA Ready:** Installable on mobile devices with offline support.
-- **Modern UI:** Tailwind CSS, Framer Motion animations.
-- **Live Darshan:** YouTube live stream integration.
+---
 
-## How to Run Locally
+## Tech Stack
 
-1. **Prerequisites:** Make sure you have Node.js (v18+) installed.
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-3. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
-4. **Open browser:** Navigate to [http://localhost:3000](http://localhost:3000)
+| | |
+|---|---|
+| Framework | Next.js 16.2.2 (App Router, Static Export) |
+| Language | TypeScript |
+| Styling | TailwindCSS v4 |
+| Fonts | Cinzel Decorative · EB Garamond · Inter · Noto Serif Telugu |
+| PWA | Serwist (Service Worker) |
+| Analytics | Google Analytics 4 (conditional) |
 
-## How to Update Content (For Temple Management)
+## Pages
 
-All content is driven by local configuration files. You don't need to know React to change text or prices. Simply edit the files in the `data/` directory:
+| Route | Description |
+|---|---|
+| `/` | Homepage — hero, temple identity, three steps preview |
+| `/about` | Temple history, origin story, reconstruction status |
+| `/devara-eddu` | The Walking God — Devara Eddu story |
+| `/three-steps` | Three Sacred Steps — divine origin journey |
+| `/timings` | Daily darshan schedule, festivals, live status |
+| `/sevas` | Seva booking via WhatsApp |
+| `/gallery` | Photo gallery + videos |
+| `/contact` | Address, phone, WhatsApp, Google Maps |
 
-- **`data/live.ts`**: Update the YouTube live URL or turn live streaming on/off.
-- **`data/donations.ts`**: Update bank details or UPI ID.
-- **`data/sevas.ts`**: Add or modify poojas, prices, and timings.
-- **`data/festivals.ts`**: Update upcoming festival dates and information.
-- **`data/gallery.ts`**: Add new images to the gallery by putting images in `public/images/gallery/` and referencing them here.
-- **`data/templeInfo.ts`**: Update phone numbers, WhatsApp, or typical Darshan timings.
+## Development
 
-*Tip: Before committing changes, test them locally to ensure everything works.*
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npx tsc --noEmit   # Type check
+npm run build      # Production build → /out
+```
 
 ## Deployment
 
-This app is configured to be exported as a static HTML application (`output: 'export'` in Next config).
+Static export — drag `out/` folder to Netlify, or connect Git repo.
+`netlify.toml` is pre-configured with build settings and security headers.
 
-### Vercel (Recommended)
-1. Push this repository to GitHub.
-2. Go to [Vercel](https://vercel.com/), create a new project, and select the repository.
-3. Add the following Environment Variable:
-   - `NEXT_PUBLIC_GA_MEASUREMENT_ID` = `G-XXXXXXXXXX` (Your Google Analytics ID)
-4. Click Deploy. Vercel automatically detects Next.js and builds the static site.
+## For AI Models / Developers
 
-### AWS S3 + CloudFront
-1. Build the static site: `npm run build`
-2. The output will be in the `/out` directory.
-3. Sync the `/out` directory to an S3 bucket configured for website hosting.
-4. Set up CloudFront to point to your S3 bucket and issue an SSL certificate via AWS Certificate Manager.
+**Read `SKSD_Project.md` before making any changes.**
+It contains the complete tech stack, page inventory, bilingual system documentation, and full change log.
 
-### Custom Domain
-Configure your DNS records (A record or CNAME) to point to your hosting provider's IP/URL (e.g., Vercel's nameservers). Wait for propagation, and the site will be live on your custom domain.
-
+**Content source:** All temple descriptions and history must come from `SKSD_History.md`.

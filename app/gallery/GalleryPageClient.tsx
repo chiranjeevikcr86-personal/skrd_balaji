@@ -9,8 +9,9 @@ import { galleryItems, GalleryItem } from "@/data/gallery";
 type FilterCategory = "all" | "temple" | "deity" | "festival" | "events" | "video";
 
 export default function GalleryPageClient() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const getText = useBilingualText();
+  const isTe = locale === "te";
   const [activeFilter, setActiveFilter] = useState<FilterCategory>("all");
   const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -63,34 +64,39 @@ export default function GalleryPageClient() {
   return (
     <>
       {/* Hero Banner */}
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 bg-gradient-to-br from-temple-dark via-maroon-900 to-temple-darker overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-gold-500 blur-[120px]" />
-        </div>
+      <section className="relative pt-28 pb-16 md:pt-36 md:pb-20 overflow-hidden" style={{ background: "linear-gradient(to bottom, #1E0A08, #1A0808)" }}>
+        <div className="absolute inset-0 mandala-bg" style={{ opacity: 0.2 }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 70%)" }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
-          <h1 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-white mb-4 animate-fade-in-up">
-            {t.gallery.title}
+          <p className="text-xs uppercase tracking-[0.35em] mb-3 animate-fade-in" style={{ color: "rgba(212,175,55,0.60)", fontFamily: "var(--font-heading)" }}>
+            {isTe ? "పవిత్ర దృశ్యాలు" : "Sacred Visuals"}
+          </p>
+          <h1 className="animate-fade-in-up mb-4" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem,5vw,3.5rem)", color: "white" }}>
+            {isTe ? <>ఆలయ <span className="text-metallic-gold">గ్యాలరీ</span></> : <>Temple <span className="text-metallic-gold">Gallery</span></>}
           </h1>
-          <p className="text-ivory-300 text-base sm:text-lg max-w-2xl mx-auto animate-fade-in-up animation-delay-100">
+          <div className="divider-premium w-40 mx-auto mb-5" />
+          <p className="animate-fade-in-up animation-delay-100 text-sm max-w-xl mx-auto" style={{ fontFamily: "var(--font-serif)", color: "rgba(251,247,240,0.55)" }}>
             {t.gallery.subtitle}
           </p>
         </div>
       </section>
 
       {/* Gallery Content */}
-      <section className="py-16 md:py-24 bg-ivory-50">
+      <section style={{ background: "#1A0808", padding: "4rem 0 5rem" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Filter Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
             {filters.map((filter) => (
               <button
                 key={filter.key}
                 onClick={() => setActiveFilter(filter.key)}
-                className={`px-5 py-2 rounded-xl font-heading font-medium text-sm transition-all duration-300 cursor-pointer ${
-                  activeFilter === filter.key
-                    ? "bg-gradient-to-r from-saffron-500 to-saffron-600 text-white shadow-lg shadow-saffron-500/20"
-                    : "bg-white text-temple-dark/60 hover:text-saffron-600 border border-ivory-200 hover:border-saffron-300"
-                }`}
+                className="px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer"
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  background: activeFilter === filter.key ? "linear-gradient(135deg,#E8690A,#D4AF37)" : "rgba(255,255,255,0.04)",
+                  color: activeFilter === filter.key ? "white" : "rgba(251,247,240,0.55)",
+                  border: activeFilter === filter.key ? "none" : "1px solid rgba(255,255,255,0.10)",
+                }}
               >
                 {filter.label}
               </button>
@@ -99,22 +105,21 @@ export default function GalleryPageClient() {
 
           {/* Image Grid - Masonry */}
           {activeFilter !== "video" && (
-            <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5">
               {(activeFilter === "all"
                 ? galleryItems.filter((i) => i.type === "image")
                 : imageItems
               ).map((item, index) => (
                 <div
                   key={index}
-                  className="break-inside-avoid group cursor-pointer relative rounded-2xl overflow-hidden
-                    shadow-sm hover:shadow-[0_8px_40px_rgba(255,136,17,0.15)]
-                    transition-all duration-500 transform hover:-translate-y-1"
+                  className="break-inside-avoid group cursor-pointer relative rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1"
+                  style={{ border: "1px solid rgba(212,175,55,0.10)" }}
                   onClick={() => openLightbox(item, index)}
                 >
                   <div
-                    className="w-full relative bg-gradient-to-br from-saffron-100 to-ivory-200 flex items-center justify-center
-                      transition-transform duration-700 group-hover:scale-105"
+                    className="w-full relative flex items-center justify-center"
                     style={{
+                      background: "#110a05",
                       aspectRatio: item.caption.en.length % 2 === 0 ? "3/4" : "4/3",
                     }}
                   >
@@ -123,34 +128,28 @@ export default function GalleryPageClient() {
                         src={item.thumbnail}
                         alt={getText(item.caption)}
                         fill
-                        className="object-cover"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     ) : (
                       <div className="text-center p-4">
-                        <span className="text-4xl block mb-2 opacity-50">📸</span>
-                        <p className="text-saffron-600/60 text-xs font-heading">
+                        <span className="text-4xl block mb-2 opacity-30">📸</span>
+                        <p className="text-xs" style={{ color: "rgba(212,175,55,0.50)", fontFamily: "var(--font-heading)" }}>
                           {getText(item.caption)}
                         </p>
                       </div>
                     )}
                   </div>
-
-                  {/* Hover overlay with frosted glass */}
-                  <div className="absolute inset-x-0 bottom-0 p-6 flex items-end
-                    bg-gradient-to-t from-temple-dark/90 via-temple-dark/50 to-transparent
-                    opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
-                    <p className="text-white font-heading text-sm sm:text-base font-medium">
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: "linear-gradient(to top, rgba(14,10,7,0.90) 0%, transparent 60%)" }}>
+                    <p className="text-white text-sm font-medium" style={{ fontFamily: "var(--font-heading)" }}>
                       {getText(item.caption)}
                     </p>
-                    
-                    {/* Zoom icon floating corner */}
-                    <div className="absolute top-4 right-4 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-                      <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30">
-                        <svg className="w-5 h-5 text-white drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                        </svg>
-                      </div>
+                    <div className="absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center" style={{ background: "rgba(212,175,55,0.20)", border: "1px solid rgba(212,175,55,0.30)" }}>
+                      <svg className="w-4 h-4 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
                     </div>
                   </div>
                 </div>
@@ -162,32 +161,28 @@ export default function GalleryPageClient() {
           {(activeFilter === "all" || activeFilter === "video") && (
             <div className={activeFilter === "all" ? "mt-12" : ""}>
               {activeFilter === "all" && (
-                <PremiumSectionHeading title={t.gallery.videos} />
+                <div className="text-center mb-8">
+                  <h2 style={{ fontFamily: "var(--font-display)", fontSize: "1.5rem", color: "white" }}>
+                    {isTe ? <>ఆలయ <span className="text-metallic-gold">వీడియోలు</span></> : <>Temple <span className="text-metallic-gold">Videos</span></>}
+                  </h2>
+                  <div className="divider-premium w-32 mx-auto mt-3" />
+                </div>
               )}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {galleryItems
                   .filter((item) => item.type === "video")
                   .map((item, index) => (
-                    <div
-                      key={index}
-                      className="rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"
-                    >
-                      <div className="aspect-video bg-temple-dark">
+                    <div key={index} className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(212,175,55,0.15)", background: "#110a05" }}>
+                      <div className="aspect-video" style={{ background: "#1A0808" }}>
                         {item.videoUrl && (
-                          <iframe
-                            src={item.videoUrl}
-                            title={getText(item.caption)}
+                          <iframe src={item.videoUrl} title={getText(item.caption)}
                             className="w-full h-full"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            loading="lazy"
-                          />
+                            allowFullScreen loading="lazy" />
                         )}
                       </div>
                       <div className="p-4">
-                        <p className="font-heading font-medium text-temple-dark">
-                          {getText(item.caption)}
-                        </p>
+                        <p className="text-sm" style={{ color: "rgba(251,247,240,0.65)", fontFamily: "var(--font-heading)" }}>{getText(item.caption)}</p>
                       </div>
                     </div>
                   ))}

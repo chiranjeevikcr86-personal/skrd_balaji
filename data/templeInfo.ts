@@ -1,37 +1,27 @@
 export const templeInfo = {
   name: {
-    en: "Sri Kanugonda Raya Swami Temple",
-    te: "శ్రీ కనుగొండ రాయస్వామి దేవాలయం",
+    en: "Sri Kanukondaraya Swamy Devasthanam",
+    te: "శ్రీ కనుకొండరాయ స్వామి దేవస్థానం",
   },
   tagline: {
     en: "A Sacred Abode of Divine Blessings",
     te: "దివ్య ఆశీర్వాదాల పవిత్ర నివాసం",
   },
   address: {
-    en: "Kanugonda Village, Andhra Pradesh, India",
-    te: "కనుగొండ గ్రామం, ఆంధ్రప్రదేశ్, భారతదేశం",
+    en: "Pedakanti Palli (Village), Gangadhara Nellore Mandal, Chittoor District, Andhra Pradesh - 517125",
+    te: "పెదకంటి పల్లి (గ్రామం), గంగాధర నెల్లూరు మండలం, చిత్తూరు జిల్లా, ఆంధ్రప్రదేశ్ - 517125",
   },
-  phone: "+91 9876543210",
-  whatsapp: "+919876543210",
-  whatsappMessage: {
-    en: "Namaste! I would like to know more about Sri Kanugonda Raya Swami Temple.",
-    te: "నమస్తే! శ్రీ కనుగొండ రాయస్వామి దేవాలయం గురించి మరింత తెలుసుకోవాలనుకుంటున్నాను.",
-  },
-  email: "info@kanugondatemple.com",
+  phone: null,          // Email-only policy — no phone number published
+  email: "hello@cjkdigitalsolutions.com",
   mapCoordinates: {
-    lat: 15.8281,
-    lng: 78.0373,
+    lat: 13.2833,
+    lng: 79.1167,
   },
   mapEmbedUrl:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.0!2d78.0373!3d15.8281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDQ5JzQxLjIiTiA3OMKwMDInMTQuMyJF!5e0!3m2!1sen!2sin!4v1",
-  socialLinks: {
-    facebook: "https://facebook.com/kanugondatemple",
-    instagram: "https://instagram.com/kanugondatemple",
-    youtube: "https://youtube.com/@kanugondatemple",
-  },
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.0!2d79.1167!3d13.2833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTMuMjgzMyw3OS4xMTY3!5e0!3m2!1sen!2sin!4v1",
   foundedYear: "Ancient",
   deity: {
-    en: "Lord Raya Swami",
-    te: "శ్రీ రాయస్వామి",
+    en: "Sri Kanukondaraya Swamy",
+    te: "శ్రీ కనుకొండరాయ స్వామి",
   },
 };

@@ -4,11 +4,8 @@ import React, { ReactNode } from "react";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppFAB from "@/components/WhatsAppFAB";
 import CookieBanner from "@/components/CookieBanner";
 import { ScrollProgress } from "@/components/ScrollProgress";
-import { CustomCursor } from "@/components/ui/CustomCursor";
-import { FestivalTicker } from "@/components/FestivalTicker";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
@@ -18,8 +15,6 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
   return (
     <LanguageProvider>
       <ScrollProgress />
-      <CustomCursor />
-      <FestivalTicker />
       <Navbar />
       <AnimatePresence mode="wait">
         <motion.main
@@ -34,7 +29,6 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
         </motion.main>
       </AnimatePresence>
       <Footer />
-      <WhatsAppFAB />
       <CookieBanner />
     </LanguageProvider>
   );

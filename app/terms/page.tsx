@@ -2,7 +2,7 @@ import React from "react";
 
 export const metadata = {
   title: "Terms of Use",
-  description: "Terms of use for Sri Kanugonda Raya Swami Temple.",
+  description: "Terms of use for Sri Kanukondaraya Swamy Devasthanam.",
 };
 
 export default function TermsPage() {
@@ -22,7 +22,7 @@ export default function TermsPage() {
 
           <h2 className="text-xl font-heading font-semibold text-temple-dark mt-8 mb-4">2. Website Content</h2>
           <p>
-            The content of the pages of this website is for your general information and use only. It is subject to change without notice. All images, text, and media related to the temple are the property of Sri Kanugonda Raya Swami Temple unless otherwise specified.
+            The content of the pages of this website is for your general information and use only. It is subject to change without notice. All images, text, and media related to the temple are the property of Sri Kanukondaraya Swamy Devasthanam unless otherwise specified.
           </p>
 
           <h2 className="text-xl font-heading font-semibold text-temple-dark mt-8 mb-4">3. Donations and Sevas</h2>

@@ -12,7 +12,7 @@ export interface DonationAmount {
 
 export const donationInfo = {
   upiId: "kanugondatemple@sbi",
-  upiName: "Sri Kanugonda Raya Swami Temple Trust",
+  upiName: "Sri Kanukondaraya Swamy Devasthanam Trust",
   qrCodeImage: "/images/donation-qr.png",
 
   bankDetails: {
@@ -80,7 +80,7 @@ export function buildUpiLink(amount: number, purpose?: string): string {
     pn: donationInfo.upiName,
     am: amount.toString(),
     cu: "INR",
-    tn: purpose ? `Donation for ${purpose} - Sri Kanugonda Raya Swami Temple` : "Donation - Sri Kanugonda Raya Swami Temple",
+    tn: purpose ? `Donation for ${purpose} - Sri Kanukondaraya Swamy Devasthanam` : "Donation - Sri Kanukondaraya Swamy Devasthanam",
   });
   return `${baseUrl}?${params.toString()}`;
 }

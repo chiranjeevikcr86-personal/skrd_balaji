@@ -1,232 +1,278 @@
 @import "tailwindcss";
 
 @theme {
-  /* Spiritual Color Palette */
-  --color-saffron-50: #fff8f0;
+  /* ============================================
+     DIVINE PRESENCE — Sacred Color Palette
+     Sri Kanukondaraya Swamy Devasthanam
+     ============================================ */
+
+  /* Primary Saffron — Sacred fire, offering flame */
+  --color-saffron-50:  #fff8f0;
   --color-saffron-100: #ffeed4;
   --color-saffron-200: #ffd9a8;
   --color-saffron-300: #ffc071;
-  --color-saffron-400: #ff9e38;
-  --color-saffron-500: #ff8811;
-  --color-saffron-600: #f06d00;
-  --color-saffron-700: #c75200;
-  --color-saffron-800: #9e4009;
-  --color-saffron-900: #7f370a;
+  --color-saffron-400: #f5941f;
+  --color-saffron-500: #E8690A;
+  --color-saffron-600: #c85500;
+  --color-saffron-700: #a34200;
+  --color-saffron-800: #7f3308;
+  --color-saffron-900: #5c2508;
 
-  --color-maroon-50: #fdf2f4;
-  --color-maroon-100: #fce7ea;
-  --color-maroon-200: #f9d0d8;
-  --color-maroon-300: #f3a9b8;
-  --color-maroon-400: #ea7a93;
-  --color-maroon-500: #dd4e71;
-  --color-maroon-600: #c92e5c;
-  --color-maroon-700: #a9204a;
-  --color-maroon-800: #8d1d41;
-  --color-maroon-900: #6b1530;
-
-  --color-gold-50: #fefce8;
+  /* Divine Gold — Temple lamps, divine light */
+  --color-gold-50:  #fefce8;
   --color-gold-100: #fef9c3;
   --color-gold-200: #fef08a;
   --color-gold-300: #fde047;
-  --color-gold-400: #facc15;
-  --color-gold-500: #d4a017;
-  --color-gold-600: #b8860b;
-  --color-gold-700: #996515;
-  --color-gold-800: #7c4d0a;
-  --color-gold-900: #5c3a08;
+  --color-gold-400: #e8c84a;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #b8960e;
+  --color-gold-700: #987609;
+  --color-gold-800: #7c5c0a;
+  --color-gold-900: #5c4208;
 
-  --color-ivory-50: #fefdfb;
-  --color-ivory-100: #fdf8ef;
-  --color-ivory-200: #fbf0dc;
-  --color-ivory-300: #f7e5c2;
-  --color-ivory-400: #f0d397;
-  --color-ivory-500: #e8be6d;
+  /* Deep Crimson — Kumkum, auspicious red */
+  --color-crimson-50:  #fdf2f4;
+  --color-crimson-100: #fce4e8;
+  --color-crimson-200: #f9cdd4;
+  --color-crimson-300: #f3a5b2;
+  --color-crimson-400: #e97086;
+  --color-crimson-500: #C45C7B;
+  --color-crimson-600: #a83a5d;
+  --color-crimson-700: #8B1A1A;
+  --color-crimson-800: #6b1515;
+  --color-crimson-900: #4d0f0f;
 
-  --color-temple-dark: #1a0f0a;
-  --color-temple-darker: #0d0705;
+  /* Sacred Teal — Peacock feather (Lord Vishnu) */
+  --color-teal-50:  #f0fafa;
+  --color-teal-100: #d9f2f4;
+  --color-teal-200: #b2e4e8;
+  --color-teal-300: #7dcfd6;
+  --color-teal-400: #40b0bc;
+  --color-teal-500: #1A5C6B;
+  --color-teal-600: #154d5a;
+  --color-teal-700: #113d48;
+  --color-teal-800: #0d2f38;
+  --color-teal-900: #091f26;
 
-  /* Fonts */
-  --font-heading: "Poppins", sans-serif;
-  --font-body: "Lato", sans-serif;
-  --font-display: "Cinzel Decorative", serif;
-  --font-serif:   "Cormorant Garamond", serif;
+  /* Ivory — Jasmine, purity, white flowers */
+  --color-ivory-50:  #fefdfb;
+  --color-ivory-100: #FBF7F0;
+  --color-ivory-200: #f5eddc;
+  --color-ivory-300: #ecdec3;
+  --color-ivory-400: #e0cba2;
+  --color-ivory-500: #d0b47c;
+
+  /* Temple Maroon — Kumkum Dusk: ancient temple brick walls lit by oil lamps */
+  --color-temple-dark:   #1A0808;
+  --color-temple-mid:    #240F0F;
+  --color-temple-higher: #300F0F;
+
+  /* Typography */
+  --font-display: "Cinzel Decorative", serif;    /* Temple name, major headings */
+  --font-serif:   "EB Garamond", serif;           /* Body / history paragraphs */
+  --font-heading: "Inter", sans-serif;            /* UI labels, nav */
+  --font-body:    "Inter", sans-serif;            /* General body text */
+  --font-telugu:  "Noto Serif Telugu", serif;     /* Telugu script */
 
   /* Premium additions */
-  --color-amber-glow:   hsl(38, 100%, 60%);
-  --color-rose-gold:    hsl(350, 60%, 65%);
-  --color-cosmic-deep:  hsl(270, 40%, 6%);
-  --color-temple-mid:   hsl(14, 60%, 12%);
-  --color-gold-sheen:   hsl(45, 95%, 52%);
+  --color-amber-glow:  hsl(38, 100%, 60%);
+  --color-gold-sheen:  hsl(45, 95%, 52%);
 }
 
+/* ============================================
+   CSS Custom Properties
+   ============================================ */
 :root {
-  --surface-glass:        rgba(255, 255, 255, 0.06);
-  --surface-glass-border: rgba(255, 255, 255, 0.12);
-  --glow-saffron:         0 0 40px rgba(255, 136, 17, 0.35);
-  --glow-gold:            0 0 60px rgba(212, 160, 23, 0.25);
+  --surface-glass:          rgba(255, 255, 255, 0.06);
+  --surface-glass-border:   rgba(255, 255, 255, 0.12);
+  --surface-dark-glass:     rgba(26, 8, 8, 0.80);
+  --glow-saffron:           0 0 40px rgba(232, 105, 10, 0.35);
+  --glow-gold:              0 0 60px rgba(212, 175, 55, 0.30);
+  --glow-crimson:           0 0 30px rgba(139, 26, 26, 0.40);
+  --border-sacred:          rgba(212, 175, 55, 0.20);
+  --border-saffron:         rgba(232, 105, 10, 0.25);
 }
 
-/* Global Styles */
+/* ============================================
+   Global Styles
+   ============================================ */
 html {
   scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-body);
-  background: var(--color-ivory-50);
-  color: var(--color-temple-dark);
+  background: #120606;
+  color: var(--color-ivory-100);
   overflow-x: hidden;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* Telugu text class */
+.font-telugu {
+  font-family: var(--font-telugu);
 }
 
-::-webkit-scrollbar-track {
-  background: var(--color-ivory-100);
+.font-display {
+  font-family: var(--font-display);
 }
 
+.font-serif-body {
+  font-family: var(--font-serif);
+}
+
+/* ─── Telugu Language Mode ─────────────────────────────────────────────── */
+/* Applied via LanguageContext when locale === "te" */
+html.lang-te body,
+html.lang-te p,
+html.lang-te span,
+html.lang-te li,
+html.lang-te a,
+html.lang-te button,
+html.lang-te label {
+  font-family: var(--font-telugu), sans-serif;
+}
+
+/* Navigation labels in Telugu — keep heading weight */
+html.lang-te [style*="--font-heading"] {
+  font-family: var(--font-telugu), sans-serif;
+  letter-spacing: 0;                /* Telugu script doesn't use letter-spacing */
+}
+
+/* Display headings in Telugu — use Cinzel only for non-Telugu characters */
+html.lang-te h1,
+html.lang-te h2,
+html.lang-te h3 {
+  font-family: var(--font-telugu), var(--font-display), serif;
+}
+
+
+/* Custom Scrollbar — saffron themed */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-temple-dark); }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-saffron-400);
-  border-radius: 4px;
+  background: linear-gradient(180deg, var(--color-saffron-500), var(--color-gold-500));
+  border-radius: 3px;
 }
+::-webkit-scrollbar-thumb:hover { background: var(--color-saffron-400); }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-saffron-500);
-}
-
-/* Animations */
+/* ============================================
+   ANIMATIONS
+   ============================================ */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
   from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 5px rgba(255, 136, 17, 0.3); }
-  50% { box-shadow: 0 0 25px rgba(255, 136, 17, 0.6); }
+  to   { opacity: 1; }
 }
 
 @keyframes slideInLeft {
   from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideInRight {
   from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
+/* Sacred lamp flicker */
+@keyframes lamp-flicker {
+  0%, 100% { opacity: 1;    transform: scale(1); }
+  25%       { opacity: 0.85; transform: scale(0.97); }
+  50%       { opacity: 0.95; transform: scale(1.02); }
+  75%       { opacity: 0.88; transform: scale(0.99); }
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+/* Divine golden glow pulse */
+@keyframes divine-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(212, 175, 55, 0.3),  0 0 20px rgba(232, 105, 10, 0.15); }
+  50%       { box-shadow: 0 0 20px rgba(212, 175, 55, 0.55), 0 0 50px rgba(232, 105, 10, 0.30); }
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+/* Text glow pulse */
+@keyframes text-glow {
+  0%, 100% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.4); }
+  50%       { text-shadow: 0 0 25px rgba(212, 175, 55, 0.8), 0 0 50px rgba(232, 105, 10, 0.4); }
 }
 
-.animate-slide-in-left {
-  animation: slideInLeft 0.6s ease-out forwards;
+/* Metallic gold shimmer (moving left to right) */
+@keyframes metallic-sheen {
+  to { background-position: 200% center; }
 }
 
-.animate-slide-in-right {
-  animation: slideInRight 0.6s ease-out forwards;
+/* Shimmer button sweep */
+@keyframes shimmer-sweep {
+  0%   { left: -75%; }
+  100% { left: 125%; }
 }
 
-/* Delay variants */
+/* Floating sacred particle */
+@keyframes particle-drift {
+  0%   { transform: translateY(0) translateX(0) scale(1);    opacity: 0.7; }
+  50%  { transform: translateY(-60px) translateX(15px) scale(1.1); opacity: 0.4; }
+  100% { transform: translateY(-120px) translateX(-5px) scale(0.8); opacity: 0; }
+}
+
+/* Sacred light ray */
+@keyframes light-ray {
+  0%, 100% { opacity: 0.04; transform: scaleX(1); }
+  50%       { opacity: 0.10; transform: scaleX(1.05); }
+}
+
+/* Scroll progress */
+@keyframes gradient-scroll {
+  to { background-position: -200% 0; }
+}
+
+/* Number count up (CSS only visible trigger) */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   ANIMATION UTILITY CLASSES
+   ============================================ */
+.animate-fade-in-up    { animation: fadeInUp 0.7s ease-out forwards; }
+.animate-fade-in       { animation: fadeIn 0.5s ease-out forwards; }
+.animate-float         { animation: float 3s ease-in-out infinite; }
+.animate-divine-glow   { animation: divine-glow 2.5s ease-in-out infinite; }
+.animate-text-glow     { animation: text-glow 3s ease-in-out infinite; }
+.animate-lamp-flicker  { animation: lamp-flicker 2.2s ease-in-out infinite; }
+.animate-slide-in-left { animation: slideInLeft 0.6s ease-out forwards; }
+.animate-slide-in-right{ animation: slideInRight 0.6s ease-out forwards; }
+
+/* Animation delays */
 .animation-delay-100 { animation-delay: 0.1s; }
 .animation-delay-200 { animation-delay: 0.2s; }
 .animation-delay-300 { animation-delay: 0.3s; }
 .animation-delay-400 { animation-delay: 0.4s; }
 .animation-delay-500 { animation-delay: 0.5s; }
-
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, var(--color-saffron-500), var(--color-gold-500), var(--color-saffron-600));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Glass morphism */
-.glass {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.glass-dark {
-  background: rgba(26, 15, 10, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 136, 17, 0.15);
-}
-
-/* Decorative divider */
-.temple-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.temple-divider::before,
-.temple-divider::after {
-  content: "";
-  height: 2px;
-  width: 60px;
-  background: linear-gradient(90deg, transparent, var(--color-saffron-400), transparent);
-}
-
-/* Om symbol decoration */
-.om-decoration::before {
-  content: "🕉";
-  font-size: 1.5rem;
-}
+.animation-delay-600 { animation-delay: 0.6s; }
+.animation-delay-700 { animation-delay: 0.7s; }
+.animation-delay-800 { animation-delay: 0.8s; }
 
 /* ============================================
-   PREMIUM UTILITIES — PHASE A
+   TYPOGRAPHY UTILITIES
    ============================================ */
 
-/* --- Metallic Gold Text --- */
+/* Metallic Gold Text */
 .text-metallic-gold {
   background: linear-gradient(
     135deg,
-    hsl(45, 80%, 55%) 0%,
-    hsl(38, 95%, 65%) 30%,
-    hsl(45, 100%, 75%) 50%,
-    hsl(38, 95%, 60%) 70%,
-    hsl(45, 80%, 55%) 100%
+    hsl(45, 80%, 55%)  0%,
+    hsl(38, 95%, 68%)  30%,
+    hsl(45, 100%, 78%) 50%,
+    hsl(38, 95%, 62%)  70%,
+    hsl(45, 80%, 55%)  100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -234,27 +280,95 @@ body {
   background-clip: text;
   animation: metallic-sheen 4s linear infinite;
 }
-@keyframes metallic-sheen {
-  to { background-position: 200% center; }
+
+/* Saffron gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-saffron-400), var(--color-gold-500), var(--color-saffron-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* --- Glowing Border Card --- */
-.card-glow {
-  border: 1px solid rgba(255, 136, 17, 0.15);
+/* Sacred gold gradient text */
+.text-sacred-gold {
+  background: linear-gradient(135deg, #D4AF37, #f5c842, #D4AF37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Drop cap for scripture-style paragraphs */
+.scripture-text::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.12em;
+  color: var(--color-gold-500);
+}
+
+/* ============================================
+   GLASSMORPHISM
+   ============================================ */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-dark {
+  background: rgba(26, 8, 8, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.glass-gold {
+  background: rgba(212, 175, 55, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.20);
+}
+
+/* ============================================
+   CARD COMPONENTS
+   ============================================ */
+
+/* Sacred gold-bordered card */
+.card-sacred {
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  background: rgba(26, 8, 8, 0.65);
+  border-radius: 1rem;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
+}
+.card-sacred:hover {
+  border-color: rgba(212, 175, 55, 0.45);
   box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.12),
+    0 8px 48px rgba(232, 105, 10, 0.12),
+    0 0 0 1px rgba(212, 175, 55, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+/* Saffron glow card (legacy support) */
+.card-glow {
+  border: 1px solid rgba(232, 105, 10, 0.15);
   transition: box-shadow 0.4s ease, border-color 0.4s ease;
 }
 .card-glow:hover {
-  border-color: rgba(255, 136, 17, 0.45);
+  border-color: rgba(232, 105, 10, 0.45);
   box-shadow:
-    0 8px 48px rgba(255, 136, 17, 0.15),
-    0 0 0 1px rgba(255, 136, 17, 0.10),
-    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    0 8px 48px rgba(232, 105, 10, 0.15),
+    0 0 0 1px rgba(232, 105, 10, 0.10);
 }
 
-/* --- Shimmer Button Sweep --- */
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+/* Shimmer sweep on hover */
 .btn-shimmer {
   position: relative;
   overflow: hidden;
@@ -262,10 +376,8 @@ body {
 .btn-shimmer::after {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -75%;
-  width: 50%;
-  height: 200%;
+  top: -50%; left: -75%;
+  width: 50%; height: 200%;
   background: linear-gradient(
     105deg,
     rgba(255, 255, 255, 0)    40%,
@@ -273,71 +385,141 @@ body {
     rgba(255, 255, 255, 0)    60%
   );
   transform: skewX(-15deg);
-  animation: shimmer-sweep 3s ease infinite;
-}
-@keyframes shimmer-sweep {
-  0%   { left: -75%; }
-  100% { left: 125%; }
+  animation: shimmer-sweep 3.5s ease infinite;
 }
 
-/* --- Ripple Click Effect --- */
-@keyframes ripple {
-  to { transform: scale(4); opacity: 0; }
-}
+/* ============================================
+   BACKGROUND DECORATIONS
+   ============================================ */
 
-/* --- Sacred Mandala Background Tile --- */
+/* Sacred mandala tile background */
 .mandala-bg {
-  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='58' stroke='%23ff8811' stroke-opacity='0.05' stroke-width='1'/%3E%3Ccircle cx='60' cy='60' r='40' stroke='%23d4a017' stroke-opacity='0.04' stroke-width='1'/%3E%3Ccircle cx='60' cy='60' r='20' stroke='%23ff8811' stroke-opacity='0.06' stroke-width='1'/%3E%3Cpath d='M60 2 L60 118' stroke='%23ff8811' stroke-opacity='0.03' stroke-width='0.5'/%3E%3Cpath d='M2 60 L118 60' stroke='%23ff8811' stroke-opacity='0.03' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='58' stroke='%23D4AF37' stroke-opacity='0.05' stroke-width='1'/%3E%3Ccircle cx='60' cy='60' r='40' stroke='%23E8690A' stroke-opacity='0.04' stroke-width='1'/%3E%3Ccircle cx='60' cy='60' r='22' stroke='%23D4AF37' stroke-opacity='0.06' stroke-width='1'/%3E%3Ccircle cx='60' cy='60' r='8'  stroke='%23E8690A' stroke-opacity='0.04' stroke-width='1'/%3E%3Cpath d='M60 2 L60 118' stroke='%23D4AF37' stroke-opacity='0.03' stroke-width='0.5'/%3E%3Cpath d='M2 60 L118 60' stroke='%23D4AF37' stroke-opacity='0.03' stroke-width='0.5'/%3E%3Cpath d='M19 19 L101 101' stroke='%23E8690A' stroke-opacity='0.025' stroke-width='0.5'/%3E%3Cpath d='M101 19 L19 101' stroke='%23E8690A' stroke-opacity='0.025' stroke-width='0.5'/%3E%3C/svg%3E");
   background-size: 120px 120px;
 }
 
-/* --- Premium Divider --- */
+/* Lotus watermark */
+.lotus-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='100' cy='120' rx='20' ry='40' stroke='%23D4AF37' stroke-opacity='0.04' stroke-width='1.5'/%3E%3Cellipse cx='100' cy='120' rx='20' ry='40' stroke='%23D4AF37' stroke-opacity='0.04' stroke-width='1.5' transform='rotate(45 100 120)'/%3E%3Cellipse cx='100' cy='120' rx='20' ry='40' stroke='%23D4AF37' stroke-opacity='0.04' stroke-width='1.5' transform='rotate(90 100 120)'/%3E%3Cellipse cx='100' cy='120' rx='20' ry='40' stroke='%23D4AF37' stroke-opacity='0.04' stroke-width='1.5' transform='rotate(135 100 120)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* Light rays (divine beam from top) */
+.light-rays::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: conic-gradient(
+    from 175deg at 50% 0%,
+    transparent 0deg,
+    rgba(212, 175, 55, 0.06) 5deg,
+    transparent 10deg,
+    transparent 15deg,
+    rgba(232, 105, 10, 0.05) 20deg,
+    transparent 25deg,
+    transparent 170deg,
+    rgba(212, 175, 55, 0.06) 175deg,
+    transparent 180deg
+  );
+  pointer-events: none;
+  animation: light-ray 4s ease-in-out infinite;
+}
+
+/* Radial amber glow helper */
+.radial-glow-amber {
+  position: relative;
+}
+.radial-glow-amber::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    rgba(232, 105, 10, 0.10) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Sacred gold pull quote */
+.pull-quote {
+  border-left: 3px solid var(--color-gold-500);
+  padding: 1rem 1.5rem;
+  background: rgba(212, 175, 55, 0.05);
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--color-ivory-200);
+}
+
+/* ============================================
+   DIVIDERS
+   ============================================ */
+
+/* Temple decorative divider with Om symbol */
+.temple-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.temple-divider::before,
+.temple-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  max-width: 80px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-500), transparent);
+}
+
+/* Full width premium divider */
 .divider-premium {
   height: 1px;
   background: linear-gradient(
     90deg,
-    transparent       0%,
-    rgba(255, 136, 17, 0.4) 30%,
-    rgba(212, 160, 23, 0.6) 50%,
-    rgba(255, 136, 17, 0.4) 70%,
-    transparent       100%
+    transparent 0%,
+    rgba(232, 105, 10, 0.4)  25%,
+    rgba(212, 175, 55, 0.6)  50%,
+    rgba(232, 105, 10, 0.4)  75%,
+    transparent 100%
   );
 }
 
-/* --- Scroll Progress Bar --- */
+/* ============================================
+   SCROLL PROGRESS BAR
+   ============================================ */
 #scroll-progress {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   height: 3px;
-  background: linear-gradient(90deg, #ff8811, #d4a017, #ff8811);
+  background: linear-gradient(90deg, #E8690A, #D4AF37, #E8690A);
   background-size: 200% 100%;
   animation: gradient-scroll 2s linear infinite;
   z-index: 9999;
   transition: width 0.1s ease;
   pointer-events: none;
 }
-@keyframes gradient-scroll {
-  to { background-position: -200% 0; }
+
+/* ============================================
+   INTERACTIVE STATES
+   ============================================ */
+:focus-visible {
+  outline: 2px solid rgba(212, 175, 55, 0.8);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
-/* --- Radial Glow Section Helper --- */
-.radial-glow-amber {
-  position: relative;
-}
-.radial-glow-amber::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 80% 60% at 50% 0%,
-    rgba(255, 136, 17, 0.10) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
+.btn-active:active,
+a:active,
+button:active {
+  transform: scale(0.96);
+  transition: transform 0.1s ease-in-out;
 }
 
-/* --- 3D Flip Card --- */
+/* ============================================
+   3D FLIP CARD
+   ============================================ */
 .flip-card { perspective: 1000px; }
 .flip-card-inner {
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -345,41 +527,17 @@ body {
   position: relative;
 }
 .flip-card:hover .flip-card-inner,
-.flip-card:focus-within .flip-card-inner {
-  transform: rotateY(180deg);
-}
-.flip-card-front,
-.flip-card-back {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-.flip-card-back {
-  transform: rotateY(180deg);
-  position: absolute;
-  inset: 0;
-}
+.flip-card:focus-within .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flip-card-back { transform: rotateY(180deg); position: absolute; inset: 0; }
 
-/* --- Premium Focus Ring --- */
-:focus-visible {
-  outline: 2px solid rgba(255, 136, 17, 0.8);
-  outline-offset: 3px;
-  border-radius: 6px;
-}
-
-/* --- Active state for all buttons via Phase G --- */
-.btn-active:active, a:active, button:active {
-  transform: scale(0.95);
-  transition: transform 0.1s ease-in-out;
-}
-
-/* --- Reduced Motion Respect --- */
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
-

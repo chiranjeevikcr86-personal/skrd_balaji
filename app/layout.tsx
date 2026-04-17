@@ -1,22 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins, Lato, Cinzel_Decorative, Cormorant_Garamond } from "next/font/google";
+import { Inter, Cinzel_Decorative, EB_Garamond, Noto_Serif_Telugu } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
-import PWAProvider from "@/components/PWAProvider";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-heading",
-  display: "swap",
-  preload: true,
-});
-
-const lato = Lato({
-  subsets: ["latin"],
-  weight: ["300", "400", "700"],
-  variable: "--font-body",
   display: "swap",
   preload: true,
 });
@@ -26,12 +17,20 @@ const cinzel = Cinzel_Decorative({
   weight: ["400", "700", "900"],
   variable: "--font-display",
   display: "swap",
+  preload: true,
 });
 
-const cormorant = Cormorant_Garamond({
+const ebGaramond = EB_Garamond({
   subsets: ["latin"],
-  weight: ["300", "400", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-serif",
+  display: "swap",
+});
+
+const notoSerifTelugu = Noto_Serif_Telugu({
+  subsets: ["telugu"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-telugu",
   display: "swap",
 });
 
@@ -39,27 +38,30 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#ff8811",
+  themeColor: "#E8690A",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kanugondatemple.com"),
   title: {
-    default: "Sri Kanugonda Raya Swami Temple | Ancient Hindu Temple in Andhra Pradesh",
-    template: "%s | Sri Kanugonda Raya Swami Temple",
+    default: "Sri Kanukondaraya Swamy Devasthanam | Ancient Hindu Temple in Chittoor, Andhra Pradesh",
+    template: "%s | Sri Kanukondaraya Swamy Devasthanam",
   },
   description:
-    "Visit Sri Kanugonda Raya Swami Temple - an ancient Hindu temple in Kanugonda, Andhra Pradesh. View darshan timings, festival schedule, gallery, and contact information.",
+    "Visit Sri Kanukondaraya Swamy Devasthanam - an ancient Hindu temple in Pedakanti Palli, Gangadhara Nellore Mandal, Chittoor District, Andhra Pradesh. View darshan timings, festival schedule, gallery, and contact information.",
   keywords: [
-    "Kanugonda temple",
-    "Raya Swami temple",
+    "Kanukondaraya Swamy",
+    "Kanukondaraya Swamy Devasthanam",
+    "Kanukondaraya temple",
+    "Hindu temple Chittoor",
     "Hindu temple Andhra Pradesh",
     "darshan timings",
     "temple gallery",
     "festivals",
     "sevas",
-    "Kanugonda Raya Swami",
     "Telugu temple",
+    "Pedakanti Palli temple",
+    "Gangadhara Nellore Mandal",
   ],
   manifest: "/manifest.json",
   appleWebApp: {
@@ -76,24 +78,18 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://kanugondatemple.com",
-    siteName: "Sri Kanugonda Raya Swami Temple",
-    title: "Sri Kanugonda Raya Swami Temple",
+    siteName: "Sri Kanukondaraya Swamy Devasthanam",
+    title: "Sri Kanukondaraya Swamy Devasthanam",
     description:
-      "Ancient Hindu temple dedicated to Lord Raya Swami in Kanugonda, Andhra Pradesh. Discover darshan timings, festivals, and plan your visit.",
+      "Ancient Hindu temple dedicated to Sri Kanukondaraya Swamy in Pedakanti Palli, Chittoor District, Andhra Pradesh. Discover darshan timings, festivals, and plan your visit.",
     images: [
       {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Sri Kanugonda Raya Swami Temple",
+        alt: "Sri Kanukondaraya Swamy Devasthanam",
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Sri Kanugonda Raya Swami Temple",
-    description:
-      "Ancient Hindu temple in Kanugonda, Andhra Pradesh. View darshan timings, gallery, and plan your visit.",
   },
   robots: {
     index: true,
@@ -108,10 +104,10 @@ const jsonLd = {
     {
       "@type": ["HinduTemple", "TouristAttraction", "Place"],
       "@id": "https://kanugondatemple.com/#temple",
-      "name": "Sri Kanugonda Raya Swami Temple",
-      "alternateName": ["Kanugonda Temple", "KRS Temple"],
+      "name": "Sri Kanukondaraya Swamy Devasthanam",
+      "alternateName": ["Kanukondaraya Swamy Temple", "KRS Devasthanam"],
       "description":
-        "Ancient Hindu temple dedicated to Sri Raya Swami located in Kanugonda village, Andhra Pradesh, India.",
+        "Ancient Hindu temple dedicated to Sri Kanukondaraya Swamy located in Pedakanti Palli, Gangadhara Nellore Mandal, Chittoor District, Andhra Pradesh - 517125.",
       "url": "https://kanugondatemple.com",
       "logo": {
         "@type": "ImageObject",
@@ -120,17 +116,18 @@ const jsonLd = {
       "image": "https://kanugondatemple.com/images/og-image.jpg",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Kanugonda Village",
-        "addressLocality": "Kanugonda",
+        "streetAddress": "Pedakanti Palli (Village), Gangadhara Nellore Mandal",
+        "addressLocality": "Gangadhara Nellore",
         "addressRegion": "Andhra Pradesh",
+        "postalCode": "517125",
         "addressCountry": "IN",
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "16.5062",
-        "longitude": "80.6480",
+        "latitude": "13.2833",
+        "longitude": "79.1167",
       },
-      "telephone": "+91-XXXXXXXXXX",
+      "email": "hello@cjkdigitalsolutions.com",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -149,7 +146,7 @@ const jsonLd = {
           "closes": "20:30",
         },
       ],
-      "hasMap": "https://maps.google.com/?q=Kanugonda+Temple+Andhra+Pradesh",
+      "hasMap": "https://maps.google.com/?q=Kanukondaraya+Swamy+Temple+Pedakanti+Palli+Chittoor",
       "publicAccess": true,
       "isAccessibleForFree": true,
     },
@@ -157,8 +154,8 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": "https://kanugondatemple.com/#website",
       "url": "https://kanugondatemple.com",
-      "name": "Sri Kanugonda Raya Swami Temple",
-      "description": "Official website for Sri Kanugonda Raya Swami Temple",
+      "name": "Sri Kanukondaraya Swamy Devasthanam",
+      "description": "Official website for Sri Kanukondaraya Swamy Devasthanam",
       "inLanguage": ["en", "te"],
       "potentialAction": {
         "@type": "SearchAction",
@@ -179,30 +176,42 @@ const jsonLd = {
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "About & History",
+          "item": "https://kanugondatemple.com/about/",
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The Walking God",
+          "item": "https://kanugondatemple.com/devara-eddu/",
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "The Three Steps",
+          "item": "https://kanugondatemple.com/three-steps/",
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
           "name": "Darshan Timings",
           "item": "https://kanugondatemple.com/timings/",
         },
         {
           "@type": "ListItem",
-          "position": 3,
-          "name": "About",
-          "item": "https://kanugondatemple.com/about/",
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Gallery",
-          "item": "https://kanugondatemple.com/gallery/",
-        },
-        {
-          "@type": "ListItem",
-          "position": 5,
+          "position": 6,
           "name": "Sevas",
           "item": "https://kanugondatemple.com/sevas/",
         },
         {
           "@type": "ListItem",
-          "position": 6,
+          "position": 7,
+          "name": "Gallery",
+          "item": "https://kanugondatemple.com/gallery/",
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
           "name": "Contact",
           "item": "https://kanugondatemple.com/contact/",
         },
@@ -217,7 +226,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${lato.variable} ${cinzel.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${inter.variable} ${cinzel.variable} ${ebGaramond.variable} ${notoSerifTelugu.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
@@ -238,7 +247,6 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <ClientLayout>{children}</ClientLayout>
-        <PWAProvider />
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}

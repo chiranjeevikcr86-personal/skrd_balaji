@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "You're Offline | Sri Kanugonda Raya Swami Temple",
+  title: "You're Offline | Sri Kanukondaraya Swamy Devasthanam",
   description: "You are currently offline. Please check your internet connection.",
   robots: { index: false, follow: false },
 };
@@ -40,7 +40,7 @@ export default function OfflinePage() {
             backgroundClip: "text",
           }}
         >
-          Sri Kanugonda Raya Swami Temple
+          Sri Kanukondaraya Swamy Devasthanam
         </h1>
 
         {/* Divider */}

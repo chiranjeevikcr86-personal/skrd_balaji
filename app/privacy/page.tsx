@@ -2,7 +2,7 @@ import React from "react";
 
 export const metadata = {
   title: "Privacy Policy",
-  description: "Privacy policy for Sri Kanugonda Raya Swami Temple.",
+  description: "Privacy policy for Sri Kanukondaraya Swamy Devasthanam.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
           
           <h2 className="text-xl font-heading font-semibold text-temple-dark mt-8 mb-4">1. Introduction</h2>
           <p>
-            Welcome to the official website of Sri Kanugonda Raya Swami Temple. We respect your privacy and are committed to protecting your personal data.
+            Welcome to the official website of Sri Kanukondaraya Swamy Devasthanam. We respect your privacy and are committed to protecting your personal data.
           </p>
 
           <h2 className="text-xl font-heading font-semibold text-temple-dark mt-8 mb-4">2. Information We Collect</h2>
