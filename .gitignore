@@ -15,7 +15,7 @@
 
 # next.js
 /.next/
-/out/
+# /out/ — intentionally committed for Netlify static deploy (build skipped)
 
 # production
 /build
